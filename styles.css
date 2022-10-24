@@ -1,0 +1,444 @@
+@font-face {
+    src: url('fnt/c64.ttf');
+    font-family: 'C64 Pro Mono';
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    font-family: 'C64 Pro Mono';
+    background-image: url('img/background.jpg');
+    background-size: cover;
+    height: 1080px;
+}
+
+h1 {
+    margin: 0;
+    padding: 15px 0;
+}
+
+h2 {
+    margin: 0;
+}
+
+h3 {
+    padding-top: 24px;
+    font-size: 10rem;
+}
+
+#game-header {
+    margin: 0 auto;
+    background: var(--c06);
+    color: var(--c0e);
+    max-width: 1024px;
+    height: 100px;
+    text-align: center;
+    box-shadow: 0 0 50px var(--c0b);
+}
+
+/* game screen */
+#game-container {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    margin: 0 auto;
+    background: var(--c00);
+    color: var(--c01);
+    max-width: 1024px;
+    min-height: 700px;
+    box-shadow: 0 0 50px var(--c0b);
+}
+
+#left-area {
+    width: 50%;
+    background: var(--c05);
+    text-align: left;
+    border-top: 64px solid black;
+    border-right: 32px solid black;
+    border-bottom: 64px solid black;
+    border-left: 64px solid black;
+}
+
+#middle-area {
+    text-align: center;
+    position: fixed;
+    align-self: center;
+    height: 300px;
+    width: 220px;
+    background: var(--c01);
+    border: 16px solid var(--c00);
+    left: calc(50% - 110px - 16px);
+}
+
+.middle-vertical-bar-top {
+    position: fixed;
+    top: 164px;
+    left: calc(50% - 16px);
+    background: var(--c01);
+    height: 136px;
+    width: 32px;
+    z-index: 10;
+}
+
+.middle-vertical-bar-bottom {
+    position: fixed;
+    top: 600px;
+    left: calc(50% - 16px);
+    background: var(--c01);
+    height: 136px;
+    width: 32px;
+    z-index: 10;
+}
+
+#middle-area-inner {
+    height: 268px;
+    width: 192px;
+    margin: 16px auto;
+    background: var(--c00);
+}
+
+#game-over-x {
+    animation: blink 500ms steps(2, start) infinite;
+    -webkit-animation: blink 500ms steps(2, start) infinite;
+    position: relative;
+}
+@keyframes blink {
+    to {visibility: hidden;}
+}
+@-webkit-keyframes blink {
+    to {visibility: hidden;}
+}
+
+#middle-time-bar {
+    background: var(--c0c);
+    height: 16px;
+    border-left: 0px solid black;
+    border-right: 0px solid black;
+    margin-top: 8px;
+}
+
+#middle-score-counter {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-top: 8px;
+}
+
+#right-area {
+    width: 50%;
+    background: var(--c0f);
+    text-align: right;
+    border-top: 64px solid var(--c00);
+    border-right: 64px solid var(--c00);
+    border-bottom: 64px solid var(--c00);
+    border-left: 32px solid var(--c00);
+}
+
+#game-footer {
+    margin: 0 auto;
+    background: var(--$02);
+    color: #6864ff;
+    max-width: 1024px;
+    height: 100px;
+    text-align: center;
+}
+
+/* menu */
+#home-screen {
+    flex-direction: column;
+    /* align-content: space-around; */
+    margin: 0 auto;
+    background: var(--c09);
+    color: var(--c0e);
+    max-width: 1024px;
+    min-height: 700px;
+    box-shadow: 0 0 50px var(--c0b);
+}
+
+#top-block {
+    height: 250px;
+    background: var(--c06);
+    text-align: center;
+    border-top: 64px solid black;
+    border-right: 64px solid black;
+    border-left: 64px solid black;
+}
+
+#middle-block {
+    height: 48px;
+    background: var(--c00);
+    text-align: center;
+    border-top: 12px solid white;
+    border-bottom: 12px solid white;
+
+    overflow: hidden;
+}
+
+#scroll-text {
+    /* animation properties */
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    
+    -moz-animation: scrolltext 40s linear infinite;
+    -webkit-animation: scrolltext 40s linear infinite;
+    animation: scrolltext 40s linear infinite;
+
+    /* styling */
+    font-size: 1.4rem;
+    color: var(--c01);
+    padding: 12px 0;
+    white-space: nowrap;  /* do not wrap text */
+}
+  
+/* for Firefox */
+@-moz-keyframes scrolltext {
+    from { -moz-transform: translateX(100%); }
+    to { -moz-transform: translateX(-750%); }
+}
+
+/* for chrome */
+@-webkit-keyframes scrolltext {
+    from { -webkit-transform: translateX(100%); }
+    to { -webkit-transform: translateX(-750%); }
+}
+
+/* other browser */
+@keyframes scrollext {
+    from {
+      -moz-transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+      transform: translateX(100%);
+    }
+    to {
+      -moz-transform: translateX(-750%);
+      -webkit-transform: translateX(-750%);
+      transform: translateX(-750%);
+    }
+}
+
+#bottom-block {
+    height: 250px;
+    background: var(--c0e);
+    text-align: center;
+    border-right: 64px solid black;
+    border-bottom: 64px solid black;
+    border-left: 64px solid black;
+}
+
+#start-button {
+    position: absolute;
+    top: 694px;
+    left: calc(50% - 140px);
+    padding: 10px 25px 3px 25px;
+    background: var(--c0f);
+    color: var(--c00);
+    font-size: 2.8rem;
+    border: 8px solid var(--c0b);
+    text-decoration: none;
+    transition: 150ms;
+    animation: startbtn 500ms infinite;
+}
+
+#start-button:hover {
+    background: var(--c00);
+    color: var(--c01);
+}
+
+@keyframes startbtn {
+    0%{margin-left: -2.5px;}
+    50% {margin-left: 2.5px;}
+    100% {margin-left: -2.5px;}
+}
+
+#sound-button {
+    position: absolute;
+    top: 694px;
+    left: calc(50% + 408px);
+    background: var(--c0d);
+    background-image: url('img/note.png');
+    width: 64px;
+    height: 64px;
+    border: 8px solid var(--c0b);
+    transition: 150ms;
+}
+
+#sound-button:hover {
+    border: 8px solid var(--c01);
+}
+
+@keyframes soundbtn {
+    0%{margin-top: 1px;}
+    50% {margin-top: -1px;}
+    100% {margin-top: 1px;}
+}
+
+#palette-button {
+    position: absolute;
+    top: 694px;
+    left: calc(50% - 488px);
+    background: var(--c03);
+    background-image: url('img/palette.png');
+    width: 64px;
+    height: 64px;
+    border: 8px solid var(--c0b);
+    transition: 150ms;
+}
+
+#palette-button:hover {
+    border: 8px solid var(--c01);
+}
+
+#top-score-wrapper {
+    display: grid;
+    grid-template-columns: 50% 1fr;
+    grid-auto-flow: column;
+    font-size: 1.4rem;
+}
+
+#top-score-bar-left {
+    text-align: left;
+}
+
+#top-score-bar-right {
+    text-align: right;
+}
+
+#top-color-list, #bottom-color-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* menu box */
+.color-item {
+    top: 56px;
+    position: relative;
+    width: 64px;
+    height: 68px;
+    border: 8px solid black;
+    padding-top: 10px;
+    font-size: 3.5rem;
+    animation-duration: 1.3s;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+/* menu box items */
+.black {
+    animation-name: bounce;
+    background: var(--c00);
+    color: var(--c01);
+}
+
+.white {
+    animation-name: bounce;
+    animation-delay: 100ms;
+    background: var(--c01);
+    color: var(--c00);
+}
+
+.red {
+    animation-name: bounce;
+    animation-delay: 200ms;
+    background: var(--c02);
+    color: var(--c01);
+}
+
+.cyan {
+    animation-name: bounce;
+    animation-delay: 300ms;
+    background: var(--c03);
+    color: var(--c01);
+}
+
+.violet {
+    animation-name: bounce;
+    animation-delay: 400ms;
+    background: var(--c04);
+    color: var(--c01);
+}
+
+.green {
+    animation-name: bounce;
+    animation-delay: 500ms;
+    background: var(--c05);
+    color: var(--c01);
+}
+
+.blue {
+    animation-name: bounce;
+    animation-delay: 600ms;
+    background: var(--c06);
+    color: var(--c01);
+}
+
+.yellow {
+    animation-name: bounce;
+    animation-delay: 700ms;
+    background: var(--c07);
+    color: var(--c01);
+}
+
+.orange {
+    animation-name: bounce;
+    animation-delay: 800ms;
+    background: var(--c08);
+    color: var(--c01);
+}
+
+.brown {
+    animation-name: bounce;
+    animation-delay: 900ms;
+    background: var(--c09);
+    color: var(--c01);
+}
+
+.pink {
+    animation-name: bounce;
+    animation-delay: 1s;
+    background: var(--c0a);
+    color: var(--c01);
+}
+
+.darkgrey {
+    animation-name: bounce;
+    animation-delay: 1.1s;
+    background: var(--c0b);
+    color: var(--c01);
+}
+
+.grey {
+    animation-name: bounce;
+    animation-delay: 1.2s;
+    background: var(--c0c);
+    color: var(--c01);
+}
+
+.lightgreen {
+    animation-name: bounce;
+    animation-delay: 1.3s;
+    background: var(--c0d);
+    color: var(--c01);
+}
+
+.midblue {
+    animation-name: bounce;
+    animation-delay: 1.4s;
+    background: var(--c0e);
+    color: var(--c01);
+}
+
+.lightgrey {
+    animation-name: bounce;
+    animation-delay: 1.5s;
+    background: var(--c0f);
+    color: var(--c01);
+}
+
+@keyframes bounce {
+    0%   { transform: rotate(0deg) translateX(30px) rotate(0deg); }
+    100% { transform: rotate(-360deg) translateX(30px) rotate(360deg); }
+}

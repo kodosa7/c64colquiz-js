@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="styles.css">
+    <span id="palette-selector"></span>
+    <link rel="font" href="c64.ttf">
+    <audio id="audio-sfx-good">
+        <source src="sfx/good.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio-sfx-fail">
+        <source src="sfx/fail.mp3" type="audio/mpeg">
+    </audio>
+</head>
+<body>
+    <div id="game-header">
+        <img src="img/title.png">
+    </div>
+    <div id="game-screen" style="display: none;">
+        <div id="game-container">
+            <div id="left-area"></div>
+            <div class="middle-vertical-bar-top"></div>
+            <div id="middle-area">
+                <div id="middle-area-inner">
+                    <h3 id="wanted-color">1</h3>
+                    <h3 id="game-over-x" class="game-over-x" style="display:none;">╳</h3>
+                    <div id="middle-time-bar">
+                    </div>
+                    <div id="middle-score-counter">
+                        00000000
+                    </div>
+                </div>
+            </div>
+            <div class="middle-vertical-bar-bottom"></div>
+            <div id="right-area"></div>
+        </div>
+    </div>
+</div>
+
+<div id="home-screen">
+    <div id="home-container">
+        <div id="top-block">
+            <div id="top-score-wrapper">
+                <div id="top-score-bar-left">Last:00000000</div>
+                <div id="top-score-bar-right">High:00000000</div>
+            </div>
+            <div id="top-color-list">
+                <div class="color-item black">0</div>
+                <div class="color-item white">1</div>
+                <div class="color-item red">2</div>
+                <div class="color-item cyan">3</div>
+                <div class="color-item violet">4</div>
+                <div class="color-item green">5</div>
+                <div class="color-item blue">6</div>
+                <div class="color-item yellow">7</div>
+            </div>
+        </div>
+        <div id="middle-block">
+            <div id="scroll-text">
+                C64ColQuiz (C) 2016 SDW Developments
+                + Privy Software.
+                Match the hex code to the colour on the left or right
+                before the timer runs out. Use mouse control. Original
+                C64 programming by Andreas Gustafsson. Sound by Vanja
+                Utne. JavaScript adaptation by Ella Senovska 2022.
+            </div>
+        </div>
+        <div id="bottom-block">
+            <div id="bottom-color-list">
+                <div class="color-item orange">8</div>
+                <div class="color-item brown">9</div>
+                        <div class="color-item pink">A</div>
+                        <div class="color-item darkgrey">B</div>
+                        <div class="color-item grey">C</div>
+                        <div class="color-item lightgreen">D</div>
+                        <div class="color-item midblue">E</div>
+                        <div class="color-item lightgrey">F</div>
+                    </div>
+                    <!-- <button data-start="start-btn" id="start-btn">Start</button> -->
+                    <div id="start-button">
+                        <div data-start="start-trigger" id="start-trigger">START</div>
+                    </div>
+                    <div data-palette="palette-trigger" id="palette-button"></div>
+                    <div data-sound="sound-trigger" id="sound-button"></div>
+                </div>
+            </div>
+        </div>
+    <script src="script.js" type="module"></script>
+</body>
