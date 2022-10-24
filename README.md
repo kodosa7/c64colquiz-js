@@ -4,6 +4,8 @@ by SDW Developments + Privy Software, 2016.
 JavaScript adaptation by ELS, 2022.
 Made to practice basic JS during Scrimba course.
 
+![image](https://user-images.githubusercontent.com/57393100/197574619-4a7acd7b-48f2-4f11-83c6-afc7a73bb39c.png)
+
 ## What is it
 Match the hex code to the colour on the left or right
 before the timer runs out. By that, you can learn C64 colour codes which might by handy  
