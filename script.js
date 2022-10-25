@@ -1,3 +1,7 @@
+// C64ColQuiz
+// by ELS 2022
+
+// set up elements
 const wantedColor = document.getElementById('wanted-color')
 const leftArea = document.getElementById('left-area')
 const rightArea = document.getElementById('right-area')
@@ -21,6 +25,7 @@ myAudio.addEventListener('ended', function() {
     this.play()
 }, false)
 
+// define global variables
 let isMusic = false
 let isVicePalette = false
 let currentColors = []
@@ -34,6 +39,7 @@ let rightAreaClick
 let gameLoop = false
 let delay = 100
 
+// initialize on the first run
 function init() {
     console.log("init()")
     leftArea.style.display = 'none'
@@ -46,6 +52,7 @@ function init() {
 
 init()
 
+// listen for document events
 document.addEventListener('click', function(e) {
     // listen for 'start game' button
     if (e.target.dataset.start) {
@@ -84,6 +91,7 @@ document.addEventListener('click', function(e) {
     }
 })
     
+// handle clicks on the left area
 function initLeftArea() {
     leftAreaClick = function() {
         console.log("left area clicked")
@@ -93,9 +101,6 @@ function initLeftArea() {
             if (score <= 30) {
                 delay -= 2  // timer decreasing speed
             }
-            // if (delay <= 1) {
-            //     delay = 1
-            // }
             audioSfxGood.play()
             inGameScoreCounter.innerHTML = `${zeroizeNumber(score[0])}`
             readyToClick = false
@@ -113,6 +118,7 @@ function initLeftArea() {
     leftArea.addEventListener('click', leftAreaClick)
 }
 
+// handle clicks on the right area
 function initRightArea() {
     rightAreaClick = function() {
         console.log("right area clicked")
@@ -122,9 +128,6 @@ function initRightArea() {
             if (score <= 30) {
                 delay -= 2  // timer decreasing speed
             }
-            // if (delay <= 1) {
-            //     delay = 1
-            // }
             audioSfxGood.play()
             inGameScoreCounter.innerHTML = `${zeroizeNumber(score[0])}`
             readyToClick = false
@@ -142,6 +145,7 @@ function initRightArea() {
     rightArea.addEventListener('click', rightAreaClick)
 }
 
+// custom score number format (########)
 function zeroizeNumber(num) {
     let zeroedScore = num.toString()
     while (zeroedScore.length < 8)
@@ -149,6 +153,7 @@ function zeroizeNumber(num) {
     return zeroedScore
 }
 
+// generate a random color
 function renderNewColor() {
     console.log('renderNewColor()')
     const leftRightRandomizer = Math.floor(Math.random() * 2)
@@ -189,6 +194,7 @@ function renderNewColor() {
     console.log(currentColors)
 }    
 
+// set time interval for in-game cuntdown
 function countdown() {
     readyToClick = true
     const middleTimeBar = document.getElementById('middle-time-bar')
@@ -213,6 +219,7 @@ function countdown() {
     }
 }
 
+// show home screen again after game over
 function showHomeScreen() {
     gameScreen.style.display = 'none'
     homeScreen.style.display = ''
@@ -224,6 +231,7 @@ function showHomeScreen() {
     menuScoreBarRight.innerHTML = `High:${zeroizeNumber(hiScore[0])}`
 }
 
+// game over animation
 function showGameOver() {
     audioSfxFail.play()
     delay = 100
@@ -250,6 +258,7 @@ function showGameOver() {
     }
 }
 
+// when start button is pressed, perform these
 function handleStartTrigger() {
     gameScreen.style.display = ''
     homeScreen.style.display = 'none'
@@ -261,6 +270,7 @@ function handleStartTrigger() {
     game()
 }
 
+// main loop
 function game() {
     if (gameLoop) {
         renderNewColor()
@@ -270,17 +280,20 @@ function game() {
     }
 }
 
+// handle sound button toggling the music on/off
 function handleSoundBtn() {
     myAudio.loop = true
     myAudio.play()
 }
 
+// disable clicks on in-game left and right areas
 function removeClickableAreas() {
     leftArea.removeEventListener('click', leftAreaClick)
     rightArea.removeEventListener('click', rightAreaClick)
     readyToClick = false
 }
 
+// disable both contdown and game over intervals
 function resetCountdown() {
     clearInterval(intervalForGameOver)
     clearInterval(intervalForCountDown)

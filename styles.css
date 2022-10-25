@@ -63,7 +63,7 @@ h3 {
 
 #middle-area {
     text-align: center;
-    position: fixed;
+    position: absolute;
     align-self: center;
     height: 300px;
     width: 220px;
@@ -73,7 +73,7 @@ h3 {
 }
 
 .middle-vertical-bar-top {
-    position: fixed;
+    position: absolute;
     top: 164px;
     left: calc(50% - 16px);
     background: var(--c01);
@@ -83,7 +83,7 @@ h3 {
 }
 
 .middle-vertical-bar-bottom {
-    position: fixed;
+    position: absolute;
     top: 600px;
     left: calc(50% - 16px);
     background: var(--c01);
