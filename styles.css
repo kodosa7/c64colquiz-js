@@ -12,6 +12,7 @@ body {
     background-image: url('img/background.jpg');
     background-size: cover;
     height: 1080px;
+    user-select: none;
 }
 
 h1 {
@@ -135,19 +136,19 @@ h3 {
     border-left: 32px solid var(--c00);
 }
 
-#game-footer {
+#help-text {
     margin: 0 auto;
-    background: var(--$02);
-    color: #6864ff;
+    font-size: 0.9rem;
+    background: var(--c0b);
+    color: var(--c01);
     max-width: 1024px;
-    height: 100px;
-    text-align: center;
+    height: 166px;
+    text-align: left;
 }
 
 /* menu */
 #home-screen {
     flex-direction: column;
-    /* align-content: space-around; */
     margin: 0 auto;
     background: var(--c09);
     color: var(--c0e);
@@ -277,7 +278,7 @@ h3 {
 #palette-button {
     position: absolute;
     top: 694px;
-    left: calc(50% - 488px);
+    left: calc(50% - 400px);
     background: var(--c03);
     background-image: url('img/palette.png');
     width: 64px;
@@ -287,6 +288,22 @@ h3 {
 }
 
 #palette-button:hover {
+    border: 8px solid var(--c01);
+}
+
+#help-button {
+    position: absolute;
+    top: 694px;
+    left: calc(50% - 488px);
+    background: var(--c0f);
+    background-image: url('img/help.png');
+    width: 64px;
+    height: 64px;
+    border: 8px solid var(--c0b);
+    transition: 150ms;
+}
+
+#help-button:hover {
     border: 8px solid var(--c01);
 }
 

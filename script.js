@@ -10,6 +10,7 @@ const gameScreen = document.getElementById('game-screen')
 const startTrigger = document.getElementById('start-trigger')
 const soundBtn = document.getElementById('sound-button')
 const paletteBtn = document.getElementById('palette-button')
+const helpBtn = document.getElementById('help-button')
 const gameOverX = document.getElementById('game-over-x')
 const inGameScoreCounter = document.getElementById('middle-score-counter')
 const menuScoreBarLeft = document.getElementById('top-score-bar-left')
@@ -17,6 +18,7 @@ const menuScoreBarRight = document.getElementById('top-score-bar-right')
 const audioSfxGood = document.getElementById('audio-sfx-good')
 const audioSfxFail = document.getElementById('audio-sfx-fail')
 const paletteSelector = document.getElementById('palette-selector')
+const helpText = document.getElementById('help-text')
 
 // when music ends, play it again
 var myAudio = new Audio('sfx/music.mp3')
@@ -27,6 +29,7 @@ myAudio.addEventListener('ended', function() {
 
 // define global variables
 let isMusic = false
+let isHelpBar = false
 let isVicePalette = false
 let currentColors = []
 let score = [0]
@@ -48,6 +51,7 @@ function init() {
     gameOverX.style.display = 'none'
     homeScreen.style.display = ''
     paletteSelector.innerHTML = `<link rel="stylesheet" href="palette1.css" id="palette-selector">`
+    // helpBar.innerHTML = helpBarInitText
 }
 
 init()
@@ -59,7 +63,7 @@ document.addEventListener('click', function(e) {
         handleStartTrigger(e.target.dataset.start)
     }
     
-    // listen for music mutton
+    // listen for music button
     if (e.target.dataset.sound) {
         if (!isMusic) {
             isMusic = true
@@ -89,6 +93,21 @@ document.addEventListener('click', function(e) {
         }
         showHomeScreen()
     }
+
+    // listen for help bar
+    if (e.target.dataset.help) {
+        if (!isHelpBar) {
+            isHelpBar = true
+            helpText.style.display = ''
+            helpBtn.style.backgroundColor = `var(--c05)`
+
+        } else {
+            isHelpBar = false
+            helpText.style.display = 'none'
+            helpBtn.style.backgroundColor = `var(--c0f)`
+        }
+    }
+
 })
     
 // handle clicks on the left area
@@ -96,7 +115,6 @@ function initLeftArea() {
     leftAreaClick = function() {
         console.log("left area clicked")
         if (currentColors[1] === currentColors[2]) {
-            console.log("left color matches")
             score[0] += 1
             if (score <= 30) {
                 delay -= 2  // timer decreasing speed
@@ -121,9 +139,7 @@ function initLeftArea() {
 // handle clicks on the right area
 function initRightArea() {
     rightAreaClick = function() {
-        console.log("right area clicked")
         if (currentColors[1] === currentColors[3]) {
-            console.log("right color matches")
             score[0] += 1
             if (score <= 30) {
                 delay -= 2  // timer decreasing speed
@@ -155,7 +171,6 @@ function zeroizeNumber(num) {
 
 // generate a random color
 function renderNewColor() {
-    console.log('renderNewColor()')
     const leftRightRandomizer = Math.floor(Math.random() * 2)
     let randomColorLeft = Math.floor(Math.random() * 16).toString(16)
     let randomColorRight = Math.floor(Math.random() * 16).toString(16)
@@ -191,7 +206,6 @@ function renderNewColor() {
     // push left & right colors into the array
     currentColors.push(randomColorRight)
     currentColors.push(randomColorLeft)
-    console.log(currentColors)
 }    
 
 // set time interval for in-game cuntdown
@@ -203,7 +217,6 @@ function countdown() {
         readyToClick = true
         let cnt = 0
         intervalForCountDown = setInterval(function() {
-            console.log('cnt', cnt)
             cnt++
             middleTimeBar.style.borderLeft = `${cnt * 2.93}px solid black`
             middleTimeBar.style.borderRight = `${cnt * 2.93}px solid black`
@@ -248,9 +261,7 @@ function showGameOver() {
         let cnt = 0
         intervalForGameOver = setInterval(function() {
             cnt++
-            console.log("game over delay counter", cnt)
             if (cnt === 2) {
-                console.log('intervalForGameOver finished!')
                 resetCountdown()
                 showHomeScreen()
             }
@@ -264,6 +275,9 @@ function handleStartTrigger() {
     homeScreen.style.display = 'none'
     leftArea.style.display = ''
     rightArea.style.display = ''
+    helpText.style.display = 'none'
+    helpBtn.style.backgroundColor = `var(--c0f)`
+    isHelpBar = false
     score = [0]
     inGameScoreCounter.innerHTML = `${zeroizeNumber(score[0])}`
     gameLoop = true

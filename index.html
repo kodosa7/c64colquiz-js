@@ -34,55 +34,67 @@
             <div id="right-area"></div>
         </div>
     </div>
-</div>
 
-<div id="home-screen">
-    <div id="home-container">
-        <div id="top-block">
-            <div id="top-score-wrapper">
-                <div id="top-score-bar-left">Last:00000000</div>
-                <div id="top-score-bar-right">High:00000000</div>
-            </div>
-            <div id="top-color-list">
-                <div class="color-item black">0</div>
-                <div class="color-item white">1</div>
-                <div class="color-item red">2</div>
-                <div class="color-item cyan">3</div>
-                <div class="color-item violet">4</div>
-                <div class="color-item green">5</div>
-                <div class="color-item blue">6</div>
-                <div class="color-item yellow">7</div>
-            </div>
-        </div>
-        <div id="middle-block">
-            <div id="scroll-text">
-                C64ColQuiz (C) 2016 SDW Developments
-                + Privy Software.
-                Match the hex code to the colour on the left or right
-                before the timer runs out. Use mouse control. Original
-                C64 programming by Andreas Gustafsson. Sound by Vanja
-                Utne. JavaScript adaptation by Ella Senovska 2022.
-            </div>
-        </div>
-        <div id="bottom-block">
-            <div id="bottom-color-list">
-                <div class="color-item orange">8</div>
-                <div class="color-item brown">9</div>
-                        <div class="color-item pink">A</div>
-                        <div class="color-item darkgrey">B</div>
-                        <div class="color-item grey">C</div>
-                        <div class="color-item lightgreen">D</div>
-                        <div class="color-item midblue">E</div>
-                        <div class="color-item lightgrey">F</div>
-                    </div>
-                    <!-- <button data-start="start-btn" id="start-btn">Start</button> -->
-                    <div id="start-button">
-                        <div data-start="start-trigger" id="start-trigger">START</div>
-                    </div>
-                    <div data-palette="palette-trigger" id="palette-button"></div>
-                    <div data-sound="sound-trigger" id="sound-button"></div>
+    <div id="home-screen">
+        <div id="home-container">
+            <div id="top-block">
+                <div id="top-score-wrapper">
+                    <div id="top-score-bar-left">Last:00000000</div>
+                    <div id="top-score-bar-right">High:00000000</div>
+                </div>
+                <div id="top-color-list">
+                    <div class="color-item black">0</div>
+                    <div class="color-item white">1</div>
+                    <div class="color-item red">2</div>
+                    <div class="color-item cyan">3</div>
+                    <div class="color-item violet">4</div>
+                    <div class="color-item green">5</div>
+                    <div class="color-item blue">6</div>
+                    <div class="color-item yellow">7</div>
                 </div>
             </div>
+            <div id="middle-block">
+                <div id="scroll-text">
+                    C64ColQuiz (C) 2016 SDW Developments
+                    + Privy Software.
+                    Original C64 programming by Andreas Gustafsson. Sound by Vanja
+                    Utne. JavaScript adaptation by Ella Senovska 2022.
+                </div>
+            </div>
+            <div id="bottom-block">
+                <div id="bottom-color-list">
+                    <div class="color-item orange">8</div>
+                    <div class="color-item brown">9</div>
+                    <div class="color-item pink">A</div>
+                    <div class="color-item darkgrey">B</div>
+                    <div class="color-item grey">C</div>
+                    <div class="color-item lightgreen">D</div>
+                    <div class="color-item midblue">E</div>
+                    <div class="color-item lightgrey">F</div>
+                </div>
+                <!-- <button data-start="start-btn" id="start-btn">Start</button> -->
+                <div id="start-button">
+                    <div data-start="start-trigger" id="start-trigger">START</div>
+                </div>
+                <div data-help="help-trigger" id="help-button"></div>
+                <div data-palette="palette-trigger" id="palette-button"></div>
+                <div data-sound="sound-trigger" id="sound-button"></div>
+            </div>
         </div>
+    </div>
+    <div id="help-text" style="display: none;">
+        <p>Instructions</p>
+        <ul>
+            <li>There are <span id="flash1">16</span> colours marked in hexadecimal codes from <span id="flash1">0</span> to <span id="flash1">F</span>.</li>
+            <li>Match the hex code that appears in the middle of the screen
+            to the colour on the <span id="flash1">left</span> or <span id="flash1">right</span> section of the playfield
+            before the timer runs out.</li>
+            <li>Right answer gets <span id="flash1">+1</span> point.</li>
+            <li>Wrong answer ends the current game.</li>
+            <li>The more points you get, the more quick is the timer.</li>
+            <li>When you reach 30+ points, the timer stops decreasing.</li>
+        </ul>
+        <p>Good Luck!</p>
+    </div>
     <script src="script.js" type="module"></script>
 </body>
