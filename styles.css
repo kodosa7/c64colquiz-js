@@ -245,6 +245,7 @@ h3 {
 #start-button:hover {
     background: var(--c00);
     color: var(--c01);
+    cursor: pointer;
 }
 
 @keyframes startbtn {
@@ -267,6 +268,7 @@ h3 {
 
 #sound-button:hover {
     border: 8px solid var(--c01);
+    cursor: pointer;
 }
 
 @keyframes soundbtn {
@@ -289,6 +291,7 @@ h3 {
 
 #palette-button:hover {
     border: 8px solid var(--c01);
+    cursor: pointer;
 }
 
 #help-button {
@@ -305,6 +308,7 @@ h3 {
 
 #help-button:hover {
     border: 8px solid var(--c01);
+    cursor: pointer;
 }
 
 #top-score-wrapper {
