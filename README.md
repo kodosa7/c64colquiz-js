@@ -4,10 +4,10 @@ by SDW Developments + Privy Software, 2016.
 JavaScript adaptation by ELS, 2022.
 Made to practice basic JS during Scrimba course.
 
-![image](https://user-images.githubusercontent.com/57393100/197574619-4a7acd7b-48f2-4f11-83c6-afc7a73bb39c.png)
+![image](https://user-images.githubusercontent.com/57393100/199811196-349ffb6a-ea46-4627-b033-fea0d06e2b11.png)
 
 ## What is it
-Match the hex code to the colour on the left or right
+Match the hex code to the colour on the left or right area  
 before the timer runs out. By that, you can learn C64 colour codes which might by handy  
 for all C64 coders and enthusiasts :)  
 
@@ -24,8 +24,7 @@ Press the bottom-right 'note' button to toggle music on/off.
 Press the bottom-left button to toggle C64 colour palette (Colodore/Pepto).
 
 ## How to run
-- To play offline, use some local server like VS Code  
-Live Server.
+- To play offline, use some like local server like VS Code Live Server.
 
 ## Developed using these tools
 - VS Code + Live Server extension
