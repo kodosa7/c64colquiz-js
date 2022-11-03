@@ -21,7 +21,7 @@ const paletteSelector = document.getElementById('palette-selector')
 const helpText = document.getElementById('help-text')
 
 // when music ends, play it again
-var myAudio = new Audio('sfx/music.mp3')
+var myAudio = new Audio('/sfx/music.mp3')
 myAudio.addEventListener('ended', function() {
     this.currentTime = 0
     this.play()
@@ -37,6 +37,7 @@ let hiScore = [0]
 let readyToClick = false
 let intervalForGameOver
 let intervalForCountDown
+let intervalForFlash
 let leftAreaClick
 let rightAreaClick
 let gameLoop = false
@@ -50,8 +51,7 @@ function init() {
     gameScreen.style.display = 'none'
     gameOverX.style.display = 'none'
     homeScreen.style.display = ''
-    paletteSelector.innerHTML = `<link rel="stylesheet" href="palette1.css" id="palette-selector">`
-    // helpBar.innerHTML = helpBarInitText
+    paletteSelector.innerHTML = `<link rel="stylesheet" href="/css/palette1.css" id="palette-selector">`
 }
 
 init()
@@ -67,13 +67,13 @@ document.addEventListener('click', function(e) {
     if (e.target.dataset.sound) {
         if (!isMusic) {
             isMusic = true
-            soundBtn.style.backgroundImage = "url('img/note-disabled.png')"
+            soundBtn.style.backgroundImage = "url('/img/note-disabled.png')"
             soundBtn.style.backgroundColor = `var(--c02)`
             soundBtn.style.animation = "soundbtn 250ms infinite"
             handleSoundBtn(e.target.dataset.sound)
         } else {
             isMusic = false
-            soundBtn.style.backgroundImage = "url('img/note.png')"
+            soundBtn.style.backgroundImage = "url('/img/note.png')"
             soundBtn.style.backgroundColor = `var(--c0d)`
             soundBtn.style.animation = "none"
             myAudio.pause()
@@ -85,11 +85,11 @@ document.addEventListener('click', function(e) {
         if (!isVicePalette) {
             isVicePalette = true
             paletteBtn.style.backgroundColor = `var(--c08)`
-            paletteSelector.innerHTML = `<link rel="stylesheet" href="palette2.css" id="palette-selector">`
+            paletteSelector.innerHTML = `<link rel="stylesheet" href="css/palette2.css" id="palette-selector">`
         } else {
             isVicePalette = false
             paletteBtn.style.backgroundColor = `var(--c03)`
-            paletteSelector.innerHTML = `<link rel="stylesheet" href="palette1.css" id="palette-selector">`
+            paletteSelector.innerHTML = `<link rel="stylesheet" href="css/palette1.css" id="palette-selector">`
         }
         showHomeScreen()
     }
@@ -103,13 +103,47 @@ document.addEventListener('click', function(e) {
 
         } else {
             isHelpBar = false
-            helpText.style.display = 'none'
+            fadeOutHelptext()
             helpBtn.style.backgroundColor = `var(--c0f)`
         }
     }
-
-})
     
+})
+
+function fadeOutHelptext() {
+    const animParams = [{opacity: 1}, {opacity: 0}]
+    helpText.animate(animParams, 125)
+    setTimeout(function() {
+        helpText.style.display = 'none'
+    }, 125)
+}
+
+// do instructions text color flash loop
+function flashTheText() {
+    let cnt = 0
+    if (!intervalForFlash) {
+        // get all classnames
+        const flashText1 = document.getElementsByClassName('flash-1')
+        const flashText2 = document.getElementsByClassName('flash-2')
+        intervalForFlash = setInterval(function() {
+            // iterate over every single class item and set color
+            for (let i of flashText1) {
+                i.style.color = `var(--seq1c${cnt})`
+            }
+            for (let i of flashText2) {
+                i.style.color = `var(--seq2c${cnt})`
+            }
+            // increase counter and repeat if an end is reached
+            cnt++
+            if (cnt > 13) {
+                cnt = 0
+            }
+        }, 50)
+    }
+}
+
+flashTheText()
+
 // handle clicks on the left area
 function initLeftArea() {
     leftAreaClick = function() {
@@ -275,12 +309,12 @@ function handleStartTrigger() {
     homeScreen.style.display = 'none'
     leftArea.style.display = ''
     rightArea.style.display = ''
-    helpText.style.display = 'none'
     helpBtn.style.backgroundColor = `var(--c0f)`
     isHelpBar = false
     score = [0]
     inGameScoreCounter.innerHTML = `${zeroizeNumber(score[0])}`
     gameLoop = true
+    fadeOutHelptext()
     game()
 }
 

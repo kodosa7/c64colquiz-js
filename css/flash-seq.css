@@ -1,0 +1,35 @@
+/* color flash sequences */
+:root {
+    /* flash-sequence: grey */
+    --seq1c0: #91ff84;
+    --seq1c1: #41b936;
+    --seq1c2: #787878;
+    --seq1c3: #474747;
+    --seq1c4: #787878;
+    --seq1c5: #41b936;
+    --seq1c6: #91ff84;
+    --seq1c7: #eff347;
+    --seq1c8: #ffffff;
+    --seq1c9: #ffffff;
+    --seq1c10: #ffffff;
+    --seq1c11: #ffffff;
+    --seq1c12: #ffffff;
+    --seq1c13: #eff347;
+
+    /* flash-sequence: color */
+    --seq2c0: #ffffff;
+    --seq2c1: #eff347;
+    --seq2c2: #5bd6ce;
+    --seq2c3: #41b936;
+    --seq2c4: #9f2dad;
+    --seq2c5: #96282e;
+    --seq2c6: #2724c4;
+    --seq2c7: #000000;
+    --seq2c8: #2724c4;
+    --seq2c9: #96282e;
+    --seq2c10: #9f2dad;
+    --seq2c11: #41b936;
+    --seq2c12: #5bd6ce;
+    --seq2c13: #eff347;
+   
+}

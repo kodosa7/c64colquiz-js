@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-    <link rel="stylesheet" href="styles.css">
+
+    <!-- styles -->
+    <link rel="stylesheet" href="css/styles.css">
     <span id="palette-selector"></span>
+    <link rel="stylesheet" href="css/flash-seq.css">
+
+    <!-- font -->
     <link rel="font" href="c64.ttf">
+
+    <!-- audio -->
     <audio id="audio-sfx-good">
         <source src="sfx/good.mp3" type="audio/mpeg">
     </audio>
@@ -18,11 +25,11 @@
     <div id="game-screen" style="display: none;">
         <div id="game-container">
             <div id="left-area"></div>
-            <div class="middle-vertical-bar-top"></div>
+            <div id="middle-vertical-bar-top"></div>
             <div id="middle-area">
                 <div id="middle-area-inner">
                     <h3 id="wanted-color">1</h3>
-                    <h3 id="game-over-x" class="game-over-x" style="display:none;">╳</h3>
+                    <h3 id="game-over-x" id="game-over-x" style="display:none;">╳</h3>
                     <div id="middle-time-bar">
                     </div>
                     <div id="middle-score-counter">
@@ -30,7 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div class="middle-vertical-bar-bottom"></div>
+            <div id="middle-vertical-bar-bottom"></div>
             <div id="right-area"></div>
         </div>
     </div>
@@ -72,7 +79,6 @@
                     <div class="color-item midblue">E</div>
                     <div class="color-item lightgrey">F</div>
                 </div>
-                <!-- <button data-start="start-btn" id="start-btn">Start</button> -->
                 <div id="start-button">
                     <div data-start="start-trigger" id="start-trigger">START</div>
                 </div>
@@ -82,19 +88,35 @@
             </div>
         </div>
     </div>
+
+    <!-- instructions section -->
     <div id="help-text" style="display: none;">
-        <p>Instructions</p>
+        <p><span class="flash-1">Instructions</span></p>
         <ul>
-            <li>There are <span id="flash1">16</span> colours marked in hexadecimal codes from <span id="flash1">0</span> to <span id="flash1">F</span>.</li>
-            <li>Match the hex code that appears in the middle of the screen
-            to the colour on the <span id="flash1">left</span> or <span id="flash1">right</span> section of the playfield
-            by clicking on it before the timer runs out.</li>
-            <li>Right answer gets <span id="flash1">+1</span> point.</li>
+            <li>There are
+                <span class="flash-1">16</span>
+                colours marked in hexadecimal codes from
+                <span class="flash-1">0</span>
+                to 
+                <span class="flash-1">F</span>.
+            </li>
+            <li>
+                Match the hex code that appears in the middle of the screen to the colour on the
+                <span class="flash-2">left</span>
+                or
+                <span class="flash-2">right</span>
+                section of the playfield by clicking on it before the timer runs out.
+            </li>
+            <li>
+                Right answer gets
+                <span class="flash-1">+1</span>
+                point.
+            </li>
             <li>Wrong answer ends the current game.</li>
             <li>The more points you get, the quicker is the timer.</li>
-            <li>When you reach 30+ points, the timer speed stops decreasing.</li>
+            <li>When you reach <span class="flash-1">30+</span> points, the timer speed stops decreasing.</li>
         </ul>
-        <p>Good Luck!</p>
+        <p><span class="flash-2">Good Luck!</span></p>
     </div>
     <script src="script.js" type="module"></script>
 </body>
